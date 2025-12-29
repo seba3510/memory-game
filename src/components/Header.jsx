@@ -1,7 +1,8 @@
 import styles from "../styles/modules/Header.module.css";
+
 function Header({ score, bestScore }) {
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.info}>
         <h1>Disney Memory Game</h1>
 

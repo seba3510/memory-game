@@ -1,7 +1,8 @@
-header {
+.header {
 	display: grid;
 	grid-template-columns: 1fr 250px;
 	grid-template-areas: "left right";
+	width: 100vw;
 }
 
 .info {
