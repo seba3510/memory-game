@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 
+import { Header } from "./components/Header";
+
+import "./styles/resets.css";
+
 function App() {
   const [characters, setCharacters] = useState([]);
+
+  const [score, setScore] = useState(0);
+
+  const [bestScore, setBestScore] = useState(0);
+
+  //======================================================================
 
   async function fetchCharacters() {
     try {
@@ -25,9 +35,11 @@ function App() {
     fetchCharacters();
   }, []);
 
+  //======================================================================
+
   return (
     <>
-      <p>Hello, World!</p>
+      <Header score={score} bestScore={bestScore} />
     </>
   );
 } // App()

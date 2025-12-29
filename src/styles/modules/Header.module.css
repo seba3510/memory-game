@@ -1,0 +1,16 @@
+header {
+	display: grid;
+	grid-template-columns: 1fr 250px;
+	grid-template-areas: "left right";
+}
+
+.info {
+	grid-area: "left";
+}
+
+.scores {
+	grid-area: "right";
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
