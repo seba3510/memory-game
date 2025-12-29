@@ -3,58 +3,71 @@ import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 
 import "./styles/style.css";
+
 import { Card } from "./components/Card";
 
+import { arrayToShuffled, arrayShuffle } from "array-shuffle";
+
 function App() {
-  const [characters, setCharacters] = useState([]);
+	const [characters, setCharacters] = useState([]);
 
-  const [score, setScore] = useState(0);
+	const [score, setScore] = useState(0);
 
-  const [bestScore, setBestScore] = useState(0);
+	const [bestScore, setBestScore] = useState(0);
 
-  //======================================================================
+	//======================================================================
 
-  async function fetchCharacters() {
-    try {
-      const url = "https://api.disneyapi.dev/character?pageSize=12";
+	async function fetchCharacters() {
+		try {
+			const url = "https://api.disneyapi.dev/character?pageSize=12";
 
-      const response = await fetch(url);
+			const response = await fetch(url);
 
-      const data = await response.json();
+			const data = await response.json();
 
-      setCharacters(data.data);
+			setCharacters(data.data);
+		} catch (error) {
+			console.error(error);
+		} // catch
+	} // fetchCharacters()
 
-      console.log(data.data);
-    } catch (error) {
-      console.error(error);
-    } // catch
-  } // fetchCharacters()
+	//======================================================================
 
-  //======================================================================
+	useEffect(() => {
+		fetchCharacters();
+	}, [setCharacters]);
 
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
+	//======================================================================
 
-  //======================================================================
+	function displayCharacters() {
+		return characters.map((character) => {
+			return (
+				<div className="card" key={character._id}>
+					<Card character={character} handleClick={shuffleCards} />
+				</div>
+			);
+		});
+	} // displayCharacters()
 
-  function displayCharacters() {
-    return characters.map((character) => {
-      return (
-        <div className="card" key={character._id}>
-          <Card character={character} />
-        </div>
-      );
-    });
-  } // displayCharacters()
+	//======================================================================
 
-  return (
-    <>
-      <Header score={score} bestScore={bestScore} />
+	function shuffleCards(event) {
+		event.preventDefault();
 
-      <main>{displayCharacters()}</main>
-    </>
-  );
+		const shuffledCards = arrayToShuffled(characters);
+
+		setCharacters(arrayShuffle(shuffledCards));
+	} // shuffleCards()
+
+	//======================================================================
+
+	return (
+		<>
+			<Header score={score} bestScore={bestScore} />
+
+			<main>{displayCharacters()}</main>
+		</>
+	);
 } // App()
 
 export { App };
