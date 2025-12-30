@@ -1,24 +1,24 @@
 import styles from "../styles/modules/Header.module.css";
 
-function Header({ score, bestScore }) {
-  return (
-    <header className={styles.header}>
-      <div className={styles.info}>
-        <h1>Disney Memory Game</h1>
+function Header({ score }) {
+	return (
+		<header className={styles.header}>
+			<div className={styles.info}>
+				<h1>Disney Memory Game</h1>
 
-        <p>
-          Get points by clicking on image; don't click on an image twice until
-          the cards are shuffled!
-        </p>
-      </div>
+				<p>
+					Get points by clicking on image; don't click on an image
+					twice until the cards are shuffled!
+				</p>
+			</div>
 
-      <div className={styles.scores}>
-        <p>Score: {score}</p>
+			<div className={styles.scores}>
+				<p>Score: {score.current}</p>
 
-        <p>Best Score: {bestScore}</p>
-      </div>
-    </header>
-  );
+				<p>Best Score: {score.best}</p>
+			</div>
+		</header>
+	);
 } // Header()
 
 export { Header };

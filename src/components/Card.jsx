@@ -1,6 +1,8 @@
 import styles from "../styles/modules/Card.module.css";
 
 function Card({ character, handleClick }) {
+	//======================================================================
+
 	return (
 		<>
 			<div className={styles.imageContainer}>

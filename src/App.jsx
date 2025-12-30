@@ -11,9 +11,10 @@ import { arrayToShuffled, arrayShuffle } from "array-shuffle";
 function App() {
 	const [characters, setCharacters] = useState([]);
 
-	const [score, setScore] = useState(0);
-
-	const [bestScore, setBestScore] = useState(0);
+	const [score, setScore] = useState({
+		current: 0,
+		best: 0,
+	});
 
 	//======================================================================
 
@@ -43,7 +44,7 @@ function App() {
 		return characters.map((character) => {
 			return (
 				<div className="card" key={character._id}>
-					<Card character={character} handleClick={shuffleCards} />
+					<Card character={character} handleClick={handleCardClick} />
 				</div>
 			);
 		});
@@ -51,19 +52,19 @@ function App() {
 
 	//======================================================================
 
-	function shuffleCards(event) {
+	function handleCardClick(event) {
 		event.preventDefault();
 
 		const shuffledCards = arrayToShuffled(characters);
 
 		setCharacters(arrayShuffle(shuffledCards));
-	} // shuffleCards()
+	} // handleCardClick()
 
 	//======================================================================
 
 	return (
 		<>
-			<Header score={score} bestScore={bestScore} />
+			<Header score={score} />
 
 			<main>{displayCharacters()}</main>
 		</>
