@@ -1,3 +1,12 @@
+@font-face {
+	font-family: "Waltograph";
+	src: url("../assets/fonts/waltograph/waltographUI.ttf");
+}
+
+html {
+	font-family: "Waltograph";
+}
+
 #root {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -5,6 +14,10 @@
 		"header"
 		"content";
 	background-color: rgba(24, 95, 143, 0.514);
+	background-image: url("../assets//images/Disney_logo_2024_univisium.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 main {
