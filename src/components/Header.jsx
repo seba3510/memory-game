@@ -1,6 +1,6 @@
 import styles from "../styles/modules/Header.module.css";
 
-function Header({ score }) {
+function Header({ score, streak }) {
 	return (
 		<header className={styles.header}>
 			<div className={styles.info}>
@@ -13,9 +13,9 @@ function Header({ score }) {
 			</div>
 
 			<div className={styles.scores}>
-				<p>Score: {score.current}</p>
+				<p>Score: {score}</p>
 
-				<p>Best Score: {score.best}</p>
+				<p>Best Score: {streak}</p>
 			</div>
 		</header>
 	);

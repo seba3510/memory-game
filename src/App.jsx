@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 
-import { Header } from "./components/Header";
+import { Header } from "./components/Header.jsx";
 
-import "./styles/style.css";
-
-import { Card } from "./components/Card";
+import { Card } from "./components/Card.jsx";
 
 import { arrayToShuffled, arrayShuffle } from "array-shuffle";
+
+import "./styles/style.css";
 
 function App() {
 	const [characters, setCharacters] = useState([]);
 
-	const [score, setScore] = useState({
-		current: 0,
-		best: 0,
-	});
+	const [score, setScore] = useState(0);
+
+	const [streak, setStreak] = useState(0);
+
+	const [card, setCard] = useState("");
 
 	//======================================================================
 
@@ -44,7 +45,13 @@ function App() {
 		return characters.map((character) => {
 			return (
 				<div className="card" key={character._id}>
-					<Card character={character} handleClick={handleCardClick} />
+					<Card
+						character={character}
+						handleClick={(event) => {
+							event.preventDefault();
+							handleCardClick(character);
+						}}
+					/>
 				</div>
 			);
 		});
@@ -52,19 +59,64 @@ function App() {
 
 	//======================================================================
 
-	function handleCardClick(event) {
-		event.preventDefault();
+	function handleCardClick(object) {
+		shuffleCards();
 
+		const isFirstRound = card === "";
+
+		if (isFirstRound) {
+			updateScore();
+			updateCard(object);
+			return;
+		} // if
+
+		const areCardsSame = card === object.name;
+
+		if (areCardsSame) {
+			setStreak(score);
+
+			setScore(0);
+			console.error("You clicked the same card twice!");
+			return;
+		} // if
+		else {
+			updateCard(object);
+			updateScore();
+		} // else
+	} // handleCardClick()
+
+	//======================================================================
+
+	function updateCard(object) {
+		setCard((prev) => {
+			prev = object.name;
+			return prev;
+		});
+	} // updateCard()
+
+	//======================================================================
+
+	function shuffleCards() {
 		const shuffledCards = arrayToShuffled(characters);
 
-		setCharacters(arrayShuffle(shuffledCards));
-	} // handleCardClick()
+		const shuffledCharacters = arrayShuffle(shuffledCards);
+
+		setCharacters(shuffledCharacters);
+	} // shuffleCards()
+
+	//======================================================================
+
+	function updateScore() {
+		setScore((prev) => {
+			return prev + 1;
+		});
+	} // updateScore()
 
 	//======================================================================
 
 	return (
 		<>
-			<Header score={score} />
+			<Header score={score} streak={streak} />
 
 			<main>{displayCharacters()}</main>
 		</>
