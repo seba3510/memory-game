@@ -7,17 +7,20 @@ html {
 	font-family: "Waltograph";
 }
 
+body {
+	background-image: url("../assets/images/Disney_Background.jpg");
+	background-size: cover;
+	;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 #root {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-areas:
 		"header"
 		"content";
-	background-color: rgba(24, 95, 143, 0.514);
-	background-image: url("../assets//images/Disney_logo_2024_univisium.webp");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 main {
@@ -35,9 +38,9 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	cursor: pointer;
 	width: 280px;
-	height: 350px;
-	border-radius: 15px;
-	background-color: rgb(37, 118, 194);
+	background-color: transparent;
+	color: black;
 }

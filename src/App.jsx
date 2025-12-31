@@ -89,7 +89,7 @@ function App() {
 
 	function updateCard(object) {
 		setCard((prev) => {
-			prev = object.name;
+			prev = object._id;
 			return prev;
 		});
 	} // updateCard()

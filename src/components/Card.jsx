@@ -10,6 +10,7 @@ function Card({ character, handleClick }) {
 					src={character.imageUrl}
 					alt={character.name}
 					onClick={handleClick}
+					className={styles.image}
 				/>
 			</div>
 

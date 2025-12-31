@@ -7,7 +7,7 @@ function Header({ score, streak }) {
 				<h1>Disney Memory Game</h1>
 
 				<p>
-					Get points by clicking on image; don't click on an image
+					Get points by clicking on image. Don't click on an image
 					twice until the cards are shuffled!
 				</p>
 			</div>
