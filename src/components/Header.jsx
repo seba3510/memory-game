@@ -8,7 +8,7 @@ function Header({ score, streak }) {
 
 				<p>
 					Get points by clicking on image. Don't click on an image
-					twice until the cards are shuffled!
+					twice!
 				</p>
 			</div>
 

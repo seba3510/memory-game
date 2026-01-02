@@ -15,7 +15,9 @@ function App() {
 
 	const [streak, setStreak] = useState(0);
 
-	const [card, setCard] = useState("");
+	const [card, setCard] = useState({});
+
+	const [message, setMessage] = useState("");
 
 	//======================================================================
 
@@ -25,9 +27,9 @@ function App() {
 
 			const response = await fetch(url);
 
-			const data = await response.json();
+			const jsonResponse = await response.json();
 
-			setCharacters(data.data);
+			setCharacters(jsonResponse.data);
 		} catch (error) {
 			console.error(error);
 		} // catch
@@ -60,9 +62,10 @@ function App() {
 	//======================================================================
 
 	function handleCardClick(object) {
+		setMessage("");
 		shuffleCards();
 
-		const isFirstRound = card === "";
+		const isFirstRound = Object.keys(card).length === 0;
 
 		if (isFirstRound) {
 			updateScore();
@@ -70,13 +73,14 @@ function App() {
 			return;
 		} // if
 
-		const areCardsSame = card === object.name;
+		const areCardsSame = card === object;
 
 		if (areCardsSame) {
 			setStreak(score);
-
 			setScore(0);
-			console.error("You clicked the same card twice!");
+
+			const error = "Game Over!";
+			setMessage(error);
 			return;
 		} // if
 		else {
@@ -89,7 +93,7 @@ function App() {
 
 	function updateCard(object) {
 		setCard((prev) => {
-			prev = object._id;
+			prev = object;
 			return prev;
 		});
 	} // updateCard()
@@ -118,7 +122,12 @@ function App() {
 		<>
 			<Header score={score} streak={streak} />
 
-			<main>{displayCharacters()}</main>
+			<main id="content">
+				<div className="message">
+					<p className="error">{message}</p>
+				</div>
+				<div className="cards">{displayCharacters()}</div>
+			</main>
 		</>
 	);
 } // App()
