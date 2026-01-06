@@ -1,16 +1,13 @@
-# React + Vite
+# Disney Card Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A card game; inspired by the game "Memory". 12 cards are displayed, using the [Disney API](https://disneyapi.dev/) After a card is selected, all the cards in the deck are shuffled. If the same card is clicked two times in a row, the game ends; otherwise, the cards are shuffled again, and the user's score increases.
 
-Currently, two official plugins are available:
+## Techonologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   HTML
+-   CSS and CSS Modules
+-   React
 
-## React Compiler
+## Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![](./assets/Memory_Game_Demo.gif)
