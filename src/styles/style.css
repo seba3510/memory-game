@@ -10,7 +10,6 @@ html {
 body {
 	background-image: url("../assets/images/Disney_Background.jpg");
 	background-size: cover;
-	;
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -21,6 +20,8 @@ body {
 	grid-template-areas:
 		"header"
 		"content";
+	background-color: rgba(51, 50, 50, 0.336);
+	min-height: 100vh;
 }
 
 #content {
@@ -37,6 +38,9 @@ body {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	font-size: 2rem;
+	margin-bottom: 3em;
+	color: white;
 }
 
 .cards {
@@ -54,7 +58,7 @@ body {
 	align-items: center;
 	text-align: center;
 	cursor: pointer;
-	width: 280px;
-	background-color: transparent;
-	color: black;
+	max-width: 280px;
+	color: white;
+	font-size: 1.5rem;
 }
