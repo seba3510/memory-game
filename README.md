@@ -10,4 +10,4 @@ A card game; inspired by the game "Memory". 12 cards are displayed, using the [D
 
 ## Demo
 
-![](./assets/Memory_Game_Demo.gif)
+[Click Here](https://glittery-gumdrop-1fc127.netlify.app/)
